@@ -1,0 +1,90 @@
+services:
+  menu-postgres:
+    image: postgres:17
+    container_name: TABLEASE_MENU_POSTGRES
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432" 
+    volumes:
+      - menu_data:/var/lib/postgresql/data
+      - ./init/menu:/docker-entrypoint-initdb.d
+
+  # inventory-postgres:
+  #   image: postgres:15
+  #   container_name: TABLEASE_INVENTORY_POSTGRES
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #   ports:
+  #     - "5433:5432" 
+  #   volumes:
+  #     - menu_data:/var/lib/postgresql/data
+  #     - ./infra/docker/postgres/init/inventory:/docker-entrypoint-initdb.d
+
+  # order-postgres:
+  #   image: postgres:15
+  #   container_name: TABLEASE_ORDER_POSTGRES
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #   ports:
+  #     - "5434:5432"
+  #   volumes:
+  #     - order_data:/var/lib/postgresql/data
+  #     - ./infra/docker/postgres/init/order:/docker-entrypoint-initdb.d
+
+  # kitchen-postgres:
+  #   image: postgres:15
+  #   container_name: TABLEASE_KITCHEN_POSTGRES
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #   ports:
+  #     - "5435:5432"
+  #   volumes:
+  #     - kitchen_data:/var/lib/postgresql/data
+  #     - ./infra/docker/postgres/init/kitchen:/docker-entrypoint-initdb.d
+
+  # bar-postgres:
+  #   image: postgres:15
+  #   container_name: TABLEASE_BAR_POSTGRES
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #   ports:
+  #     - "5436:5432"
+  #   volumes:
+  #     - kitchen_data:/var/lib/postgresql/data
+  #     - ./infra/docker/postgres/init/bar:/docker-entrypoint-initdb.d
+
+  # notification-postgres:
+  #   image: postgres:15
+  #   container_name: TABLEASE_NOTIFICATION_POSTGRES
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #   ports:
+  #     - "5437:5432"
+  #   volumes:
+  #     - notification_data:/var/lib/postgresql/data
+  #     - ./infra/docker/postgres/init/notification:/docker-entrypoint-initdb.d
+
+volumes:
+  menu_data:
+  # inventory_data:
+  # order_data:
+  # kitchen_data:
+  # bar_data:
+  # notification_data:
